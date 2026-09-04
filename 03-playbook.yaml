@@ -3,5 +3,5 @@
   become: yes
   tasks: 
    msg: install nginx
-   ansible.buitin.package:
-   state: enabled
+    ansible.buitin.package:
+    state: enabled
