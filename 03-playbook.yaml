@@ -1,0 +1,7 @@
+- name: install the server nginx
+  hosts: web
+  become: yes
+  tasks: 
+   msg: install nginx
+   ansible.buitin.package:
+   state: enabled
