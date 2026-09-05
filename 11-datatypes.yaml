@@ -2,10 +2,23 @@
   hosts: local
   connection: local
   vars:
-   NAME: "SANTOSH"
-   HRS: 140
-   IS_LIVE: TRUE
+    PROGRAM: "DEVOPS WITH AWS"
+    HRS: 140
+    IS_LIVE: TRUE
+    DETAILS:
+     MONTH: 4
+     TRAINER: SIVAKUMAR REDDY
+    TOPICS:
+   - LINUX
+   - SHELL
+   - ANSIBLE
   tasks:
-  - name: print datatypes
+  - name: print variables
     ansible.builtin.debug:
-     msg: "Hi learning datatypes"
+     msg: |
+      PROGRAM: {{ PROGRAM }}
+      HRS: {{ HRS }}
+      IS_LIVE: {{ IS_LIVE }}
+      DETAILS: {{ DETAILS }}
+      TPOICS: {{ TOPICS }}
+      
