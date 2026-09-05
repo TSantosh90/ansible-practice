@@ -6,7 +6,7 @@
   vars_files:
   - course.yaml
   vars_prompt:
-   NAME: "Variables from prompt"
+   name: "Variables from prompt"
    prompt: please enter your name
    private: false
   tasks:
