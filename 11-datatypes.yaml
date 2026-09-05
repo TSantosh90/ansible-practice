@@ -1,0 +1,11 @@
+- name: datatypes
+  hosts: local
+  connection: local
+  vars:
+   NAME: "SANTOSH"
+   HRS: 140
+   IS_LIVE: TRUE
+  tasks:
+  - name: print datatypes
+    ansible.builtin.debug:
+     msg: "Hi learning datatypes"
