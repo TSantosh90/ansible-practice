@@ -1,0 +1,16 @@
+- name: play with variables
+  hosts: local
+  connection: local
+  vars:
+   COURSE: "Ansible from play"
+  vars_files:
+  - course.yaml
+  vars_prompt:
+   NAME: "Variables from prompt"
+   prompt: please enter your name
+   private: false
+  tasks:
+   vars:
+    COURSE: "Ansible from Task"
+    ansible.builtin.debug:
+     msg: "Couse is {{ COURSE }}"
