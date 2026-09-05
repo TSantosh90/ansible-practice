@@ -13,4 +13,4 @@
    vars:
     COURSE: "Ansible from Task"
     ansible.builtin.debug:
-     msg: "Couse is {{ COURSE }}"
+     msg: "HI {{ NAME }}"
