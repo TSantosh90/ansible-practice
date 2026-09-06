@@ -3,10 +3,10 @@
   connection: local
   vars:
     topics: mysql,ansible,zip,nginx
-  tags:
-  name: ansible 
-  project: Roboshop
-  duration: 120
+    tags:
+     name: ansible 
+     project: Roboshop
+     component: catalogue
   tasks:
   - name: greetings
     ansible.builtin.debug:
