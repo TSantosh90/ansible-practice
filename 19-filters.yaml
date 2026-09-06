@@ -1,0 +1,7 @@
+- name: demo on filters
+  hosts: local
+  connection: local
+  tasks:
+  - name: greetings
+    ansibile.builtin.debug:
+     msg: " Hi Santosh kumar, {{ GREETINGS | default('good morning') }}"
