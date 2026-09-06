@@ -1,7 +1,8 @@
 - name: demo on filters
   hosts: local
   connection: local
-  topics: mysql,ansible,zip,nginx
+  vars:
+    topics: mysql,ansible,zip,nginx
   tasks:
   - name: greetings
     ansible.builtin.debug:
@@ -9,4 +10,4 @@
 
   - name: convert string to list
     ansible.builtin.debug:
-     msg: "{{ topics | spilt(,) }}"
+     msg: "{{ topics | spilt(',') }}"
