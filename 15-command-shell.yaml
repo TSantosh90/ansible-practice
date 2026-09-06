@@ -7,6 +7,9 @@
      ansible.builtin.shell: cat /etc/passwd | grep root
      register: user_output
 
-   - name: print user_output
+     ansible.builtin.shell: ls-ltr > files.txt
+     register: files_output
+
+   - name: print output for files 
      ansible.builtin.debug:
-      msg: "{{ user_output }}"
+      msg: "{{ files_output }}"
