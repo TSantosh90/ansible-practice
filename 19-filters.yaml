@@ -3,7 +3,7 @@
   connection: local
   vars:
     topics: mysql,ansible,zip,nginx
-    tags:
+    tagsList:
      name: ansible 
      project: Roboshop
      component: catalogue
