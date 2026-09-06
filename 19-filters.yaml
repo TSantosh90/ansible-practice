@@ -3,10 +3,24 @@
   connection: local
   vars:
     topics: mysql,ansible,zip,nginx
-    tagsList:
+    tagsMap:
      name: ansible 
      project: Roboshop
      component: catalogue
+     tagsList:[
+        {
+            "key": "name",
+            "value": "ansible"
+        },
+        {
+            "key": "project",
+            "value": "Roboshop"
+        },
+        {
+            "key": "component",
+            "value": "catalogue"
+        }
+    ]      
   tasks:
   - name: greetings
     ansible.builtin.debug:
@@ -18,4 +32,8 @@
 
   - name: convert map to list
     ansible.builtin.debug:
-     msg: "{{ tagsList | dict2items }}"
+     msg: "{{ tagsMap | dict2items }}"
+
+  - name: convert list to map
+    ansible.builtin.debug:
+     msg: "{{ tagsList | items2dict }}"
