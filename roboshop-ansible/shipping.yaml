@@ -73,15 +73,14 @@
 
    - name: import shipping data
      community.mysql.mysql_db:
+      name: shipping
       state: import
-      name: all
-      login_host: "{{ MYSQL_HOST }}"
-      login_user: root
-      login_password: Roboshop@1
       target: "{{ item }}"
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
      loop:
      - /app/db/schema.sql
-     - /app/db/app-user.sql 
+     - /app/db/app-user.sql
      - /app/db/master-data.sql
 
    - name: start and enable the service
