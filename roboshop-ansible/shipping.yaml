@@ -72,23 +72,23 @@
      - cryptography
 
    - name: Load SQL files
-  community.mysql.mysql_db:
-    name: "{{ component }}"
-    state: import
-    target: "{{ item }}"
-    login_host: mysql-dev.santoshdevops.online
-    login_port: 3306
-    login_user: root
-    login_password: Roboshop@1
-  loop:
-    - /app/db/schema.sql
-    - /app/db/app-user.sql
-    - /app/db/master-data.sql
+     community.mysql.mysql_db:
+      name: "{{ component }}"
+      state: import
+      target: "{{ item }}"
+      login_host: mysql-dev.santoshdevops.online
+      login_port: 3306
+      login_user: root
+      login_password: Roboshop@1
+     loop:
+      - /app/db/schema.sql
+      - /app/db/app-user.sql
+      - /app/db/master-data.sql
 
-- name: start and enable the service
-  ansible.builtin.service:
-    name: shipping
-    state: restarted
-    Enabled: yes
+   - name: start and enable the service
+     ansible.builtin.service:
+      name: shipping
+      state: restarted
+      Enabled: yes
   
 
