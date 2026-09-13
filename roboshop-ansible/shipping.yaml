@@ -2,7 +2,7 @@
   hosts: shipping
   become: yes
   tasks:
-   - name: install maven and mysql 
+   - name: install maven & mysql
      ansible.builtin.dnf:
       name: "{{ item }}"
       state: present
@@ -42,52 +42,42 @@
      ansible.builtin.unarchive:
         src: /tmp/shipping.zip
         dest: /app
-        remote_src: yes 
+        remote_src: yes
 
    - name: install dependencies
      ansible.builtin.command: mvn clean package
      args:
-        chdir: /app
+      chdir: /app
 
    - name: install dependencies
      ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
      args:
-        chdir: /app
+      chdir: /app
 
    - name: create systemctl service
      ansible.builtin.template:
-       src: shipping.service
-       dest: /etc/systemd/system/shipping.service
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service
 
    - name: daemon reload
      ansible.builtin.systemd_service:
-       daemon_reload: true
-   
-   - name: install dependencies
-     ansible.builtin.pip:
-      name: PyMySQL
-      executable: pip3.9
-     loop:
-     - PyMySQL
-     - cryptography
+       daemon_reload: true 
 
-   - name: import shipping data
+   - name: import shippng data
      community.mysql.mysql_db:
-      name: all
       state: import
+      name: all
       login_host: "{{ MYSQL_HOST }}"
       login_user: root
       login_password: Roboshop@1
       target: "{{ item }}"
      loop:
       - /app/db/schema.sql
-      - /app/db/app-user.sql
+      - /app/db/app-user.sql 
       - /app/db/master-data.sql
 
    - name: start and enable shipping
      ansible.builtin.service:
       name: shipping
       state: restarted
-      Enabled: yes
-  
-
+      enabled: yes
