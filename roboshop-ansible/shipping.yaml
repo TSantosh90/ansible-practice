@@ -71,21 +71,20 @@
      - PyMySQL
      - cryptography
 
-   - name: Load SQL files
+   - name: import shipping data
      community.mysql.mysql_db:
-      name: "{{ component }}"
+      name: all
       state: import
-      target: "{{ item }}"
-      login_host: mysql-dev.santoshdevops.online
-      login_port: 3306
+      login_host: "{{ MYSQL_HOST }}"
       login_user: root
       login_password: Roboshop@1
+      target: "{{ item }}"
      loop:
       - /app/db/schema.sql
       - /app/db/app-user.sql
       - /app/db/master-data.sql
 
-   - name: start and enable the service
+   - name: start and enable shipping
      ansible.builtin.service:
       name: shipping
       state: restarted
